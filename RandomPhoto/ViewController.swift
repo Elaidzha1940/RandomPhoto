@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .brown
+        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -29,6 +29,15 @@ class ViewController: UIViewController {
         return button
     }()
     
+    let colors: [UIColor] = [
+        .systemCyan,
+        .systemBlue,
+        .systemMint,
+        .systemPink,
+        .systemGray,
+        .systemTeal
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
@@ -37,12 +46,12 @@ class ViewController: UIViewController {
             x: 0,
             y: 0,
             width: 300,
-            height: 350)
+            height: 300)
         
         imageView.center = view.center
         
         view.addSubview(button)
-       
+        
         getRandomPhoto()
         button.addTarget(self, action: #selector(didTapButton),
                          for: .touchUpInside)
@@ -51,6 +60,8 @@ class ViewController: UIViewController {
     
     @objc func didTapButton() {
         getRandomPhoto()
+        
+        view.backgroundColor = colors.randomElement()
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,10 +75,8 @@ class ViewController: UIViewController {
     }
     
     func getRandomPhoto() {
-        
         let urlString =
-        "https://unsplash.com/s/photos/random/600x600"
-        //"https://source.unsplash.com/random"
+        "https://unsplash.com/s/photos/random/500x500"
         let url = URL(string: urlString)!
         guard let data = try? Data(contentsOf: url) else {
             return
