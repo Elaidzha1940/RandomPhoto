@@ -39,7 +39,11 @@ class ViewController: UIViewController {
                                  height: 350)
         imageView.center = view.center
         
-        
+        view.addSubview(button)
+        button.frame = CGRect(x: 20,
+                              y: 0,
+                              width: view.frame.size.width-40,
+                              height: 50)
         
         getRandomPhoto()
         
