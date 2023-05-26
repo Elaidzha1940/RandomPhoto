@@ -21,6 +21,14 @@ class ViewController: UIViewController {
         return imageView
     }()
     
+    private let button: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setTitle("Random Photo", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
@@ -31,11 +39,22 @@ class ViewController: UIViewController {
                                  height: 350)
         imageView.center = view.center
         
+        
+        
+        getRandomPhoto()
+        
     }
+    
     func getRandomPhoto() {
         
-        urlString = "https://unsplash.com/s/photos/random/600x600"
+        let urlString =
+        "https://unsplash.com/s/photos/random/600x600"
+        //"https://source.unsplash.com/random"
         let url = URL(string: urlString)!
+        guard let data = try? Data(contentsOf: url) else {
+            return
+        }
+        imageView.image = UIImage(data: data)
     }
 }
 
