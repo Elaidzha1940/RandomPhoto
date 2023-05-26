@@ -32,5 +32,10 @@ class ViewController: UIViewController {
         imageView.center = view.center
         
     }
+    func getRandomPhoto() {
+        
+        urlString = "https://unsplash.com/s/photos/random/600x600"
+        let url = URL(string: urlString)!
+    }
 }
 
