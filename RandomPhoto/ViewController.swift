@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .white
         button.setTitle("Random Photo", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         return button
     }()
     
@@ -33,17 +33,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
         view.addSubview(imageView)
-        imageView.frame = CGRect(x: 0,
-                                 y: 0,
-                                 width: 300,
-                                 height: 350)
+        imageView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: 300,
+            height: 350)
+        
         imageView.center = view.center
         
         view.addSubview(button)
-        button.frame = CGRect(x: 20,
-                              y: 0,
-                              width: view.frame.size.width-40,
-                              height: 50)
+        button.frame = CGRect(
+            x: 20,
+            y: view.frame.size.height-50-view.safeAreaInsets.bottom,
+            width: view.frame.size.width-40,
+            height: 50)
         
         getRandomPhoto()
         
